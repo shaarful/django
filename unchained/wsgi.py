@@ -1,5 +1,5 @@
 """
-WSGI config for unchained project.
+WSGI conf for unchained project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

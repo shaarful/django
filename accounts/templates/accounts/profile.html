@@ -1,0 +1,12 @@
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+    <h2>Permission</h2>
+    <p><a href="{% url 'accounts:password_change' %}">Password Change</a></p>
+    <form action="{% url 'accounts:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+{% else %}
+    <p><a href="{% url 'accounts:password_reset' %}">Password Reset</a></p>
+    <p>Welcome, new user. Please log in.</p>
+{% endif %}

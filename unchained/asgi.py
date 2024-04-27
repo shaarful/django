@@ -1,5 +1,5 @@
 """
-ASGI config for unchained project.
+ASGI conf for unchained project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
