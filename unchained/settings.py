@@ -33,9 +33,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "django.contrib.auth.middleware.RemoteUserMiddleware",
 ]
 
-ROOT_URLCONF = 'djangoUnchained.urls'
+# AUTHENTICATION_BACKENDS = [
+#     "django.contrib.auth.backends.RemoteUserBackend",
+# ]
+
+ROOT_URLCONF = 'unchained.urls'
 
 TEMPLATES = [
     {
@@ -53,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangoUnchained.wsgi.application'
+WSGI_APPLICATION = 'unchained.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

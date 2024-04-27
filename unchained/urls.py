@@ -1,5 +1,5 @@
 """
-URL configuration for djangoUnchained project.
+URL configuration for unchained project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include("main.urls")),
     path("polls/", include("polls.urls")),
     path('admin/', admin.site.urls),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
