@@ -20,10 +20,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "debug_toolbar",
+    'rest_framework',
+    'debug_toolbar',
     'main.apps.MainConfig',
     'polls.apps.PollsConfig',
     'accounts.apps.AccountsConfig',
+    'snippets',
+    'api'
 ]
 
 MIDDLEWARE = [
