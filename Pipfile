@@ -8,6 +8,8 @@ django = "*"
 django-debug-toolbar = "*"
 djangorestframework = "*"
 pygments = "*"
+django-oauth-toolkit = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

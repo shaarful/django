@@ -25,4 +25,5 @@ urlpatterns = [
     path("polls/", include("polls.urls")),
     path("snippets/", include("snippets.urls")),
     path("api/", include("api.urls")),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 ]

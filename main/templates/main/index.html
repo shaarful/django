@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Django Unchained</title>
+    <style>
+        body {
+            margin: 5rem;
+        }
+    </style>
 </head>
 <body>
 
@@ -11,16 +16,35 @@
     <h2>Permission</h2>
     <p><a href="{% url 'accounts:password_change' %}">Password Change</a></p>
     <a href="{% url 'accounts:profile' %}">Profile</a>
+    <p></p>
     <form action="{% url 'accounts:logout' %}" method="post">
         {% csrf_token %}
         <button type="submit">Log Out</button>
     </form>
+    <br>
+    <h3>Admin</h3>
+    <div>
+        <p><a href="/admin">Admin</a></p>
+    </div>
+    <h3>Snippets</h3>
+    <div>
+        <p><a href="{% url 'snippets:list' %}">List</a></p>
+    </div>
+    <h3>API</h3>
+    <div>
+        <p><a href="{% url 'api:users' %}">Users</a></p>
+    </div>
+    <h3>Oauth Tool</h3>
+    <div>
+        <p><a href="{% url 'oauth2_provider:list' %}">Applications</a></p>
+        <p><a href="{% url 'oauth2_provider:register' %}">Create Application</a></p>
+        <p><a href="{% url 'oauth2_provider:authorize' %}">Authorize</a></p>
+    </div>
 {% else %}
     <p><a href="{% url 'accounts:password_reset' %}">Password Reset</a></p>
     <a href="{% url 'accounts:login' %}">Login</a>
     <p>Welcome, new user. Please log in.</p>
 {% endif %}
-
 
 </body>
 </html>

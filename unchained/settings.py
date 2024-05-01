@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-i1s=g%@_9x9c1lk!yjr3nfw(@i96-xbe4fcr(2(7b)73)ms4ek
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -20,8 +20,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'debug_toolbar',
+    'rest_framework',
+    'oauth2_provider',
+    'corsheaders',
     'main.apps.MainConfig',
     'polls.apps.PollsConfig',
     'accounts.apps.AccountsConfig',
@@ -30,10 +32,12 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -41,9 +45,12 @@ MIDDLEWARE = [
     # "django.contrib.auth.middleware.RemoteUserMiddleware",
 ]
 
-# AUTHENTICATION_BACKENDS = [
-#     "django.contrib.auth.backends.RemoteUserBackend",
-# ]
+AUTHENTICATION_BACKENDS = [
+    # "django.contrib.auth.backends.RemoteUserBackend",
+    'oauth2_provider.backends.OAuth2Backend',
+    # Uncomment following if you want to access the admin
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 ROOT_URLCONF = 'unchained.urls'
 
@@ -118,3 +125,24 @@ INTERNAL_IPS = [
     "127.0.0.1",
     "localhost",
 ]
+CORS_ORIGIN_ALLOW_ALL = True
+
+CLIENT_ID = '9h1YKQdLvrsMvVuysaRcDOhChlydgk5mtTtBz1zd'
+CLIENT_SECRET = 'qHbdbb8nrckRjE2ic8DeocKdlIrCnAQhOseDqSZ3qenlrFAJbMIJHPHODhYR4YV4FyuRAqTyriYUbtxvtojRYpiRstcXXoXZMyrISputuKpNLvIXHzWJCtywAnrw3Xhz'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {
+        'read': 'Read scope',
+        'write': 'Write scope',
+        'introspection': 'Introspect token scope',
+    },
+}
